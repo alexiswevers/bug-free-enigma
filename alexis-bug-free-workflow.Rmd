@@ -1,0 +1,31 @@
+---
+title: "R Notebook hospital Alexis"
+output: html_notebook
+---
+
+Import hospital data
+```{r}
+library(readr)
+library(tidyverse)
+visits_by_hospital <- read_csv("https://raw.githubusercontent.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/master/Examples/data/visits_by_hospital.csv")
+
+```
+
+subset the data for important hospitals
+
+```{r}
+finaldataset <- visits_by_hospital %>%
+ filter(!(name %in% c("kent county memorial hospital", "memorial hospital of rhode island", 
+"newport hospital", "our lady of fatima hospital"))) %>%
+ filter(!(encounterclass %in% c("wellness", "urgentcare"
+))) 
+```
+
+data viz of top visits
+
+```{r}
+ggplot(finaldataset) +
+  aes(x = encounterclass, y = n) +
+  geom_boxplot(shape = "circle", fill = "#112446") +
+  theme_minimal()
+```
