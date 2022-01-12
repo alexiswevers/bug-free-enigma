@@ -28,4 +28,5 @@ ggplot(finaldataset) +
   aes(x = encounterclass, y = n) +
   geom_boxplot(shape = "circle", fill = "#112446") +
   theme_minimal()
+alexis
 ```
